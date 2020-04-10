@@ -11,6 +11,10 @@ Demo app to learn some React.
 ## Stretch Goals
 * Add authentication
 
+## Requirements
+
+Install AdventureWorks db from https://docs.microsoft.com/en-gb/sql/samples/adventureworks-install-configure?view=sql-server-ver15
+
 ## Notes
 
 So I thought I would be using Axios to get data. Don't need to as can just use fetch().

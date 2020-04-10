@@ -29,11 +29,11 @@ namespace MyReactApp.Controllers
                     var subCategories = multi.Read<SubCategory>().ToList();
                     return categories.Select(c => new
                     {
-                        c.ProductCategoryId,
+                        Id = c.ProductCategoryId,
                         c.Name,
                         SubCategories = subCategories
                             .Where(sc => sc.ProductCategoryId == c.ProductCategoryId)
-                            .Select(sc => new { sc.ProductSubcategoryId, sc.Name })
+                            .Select(sc => new { Id = sc.ProductSubcategoryId, sc.Name })
                     });
                 }
             }
