@@ -9,19 +9,14 @@ export class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = { subCategoryId: null };
-        this.updateSubCategory = this.updateSubCategory.bind(this);
-    }
-
-    updateSubCategory(subCategoryId) {
-        this.setState({ subCategoryId: subCategoryId });
     }
 
     render() {
         return (
             <div>
                 <NavMenu />
-                <CategoryNav onUpdateSubCategory={this.updateSubCategory} />
                 <Container>
+                    <CategoryNav />
                     {this.props.children}
                 </Container>
             </div>

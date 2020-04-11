@@ -1,35 +1,6 @@
 import React, { Component } from 'react';
-import { Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
-
-class CategoryDropdown extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { isOpen: false };
-        this.toggleIsOpen = this.toggleIsOpen.bind(this);
-    }
-
-    toggleIsOpen() {
-        this.setState((state) => ({
-            isOpen: !state.isOpen
-        }));
-    }
-
-    render() {
-        // Is this toggle stuff required?
-        return (<Dropdown nav isOpen={this.state.isOpen} toggle={this.toggleIsOpen}>
-            <DropdownToggle nav caret>
-                {this.props.name}
-            </DropdownToggle>
-            <DropdownMenu>
-                {this.props.subCategories.map(subCategory =>
-                    <DropdownItem key={subCategory.id} onClick={() => this.props.onUpdateSubCategory(subCategory.id)}>{subCategory.name}</DropdownItem>
-                )}
-            </DropdownMenu>
-        </Dropdown>)
-    };
-}
-
+import { Nav } from 'reactstrap';
+import { CategoryDropdown } from './CategoryDropdown';
 
 export class CategoryNav extends Component {
     constructor(props) {
@@ -41,16 +12,14 @@ export class CategoryNav extends Component {
         this.populateWeatherData();
     }
 
-    static renderCategoryNav(categories, onUpdateSubCategory) {
+    static renderCategoryNav(categories) {
         return (
-            <div>
-                <Nav tabs>
-                    {
-                        categories.map(category =>
-                            <CategoryDropdown key={category.id} {...category} onUpdateSubCategory={onUpdateSubCategory} />
+            <Nav tabs>
+                {
+                    categories.map(category =>
+                        <CategoryDropdown key={category.id} {...category} />
                     )}
-                </Nav>
-            </div>
+            </Nav>
         );
     }
 
@@ -58,7 +27,7 @@ export class CategoryNav extends Component {
         return (
             this.state.loading
                 ? <p><em>Loading...</em></p>
-                : CategoryNav.renderCategoryNav(this.state.categories, this.props.onUpdateSubCategory)
+                : CategoryNav.renderCategoryNav(this.state.categories)
         );
     }
 
