@@ -1,9 +1,41 @@
 ﻿import React, { Component } from 'react';
-import { useParams } from "react-router-dom";
 
-export function ProductList() {
+export function ProductList(props) {
+    return (<ProductListTable productSubcategoryId={props.match.params.id} />)
+}
 
-    let { id } = useParams();
+class ProductListTable extends Component {
 
-    return (<h1>Hello! {id}</h1>)
+    constructor(props) {
+        super(props);
+        this.state = { products: [], loading: true };
+    }
+
+    componentDidMount() {
+        this.populateProducts();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.productSubcategoryId !== prevProps.productSubcategoryId) {
+            this.populateProducts();
+        }
+    }
+
+    async populateProducts() {
+        const response = await fetch('api/Product?productSubcategoryId=' + this.props.productSubcategoryId);
+        const data = await response.json();
+        this.setState({ products: data, loading: false });
+    }
+
+    render() {
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : <p><em>NOT Loading...</em></p>;
+
+        return (
+            <div>
+                {contents}
+            </div>
+        );
+    }
 }
