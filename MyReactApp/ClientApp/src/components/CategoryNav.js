@@ -16,13 +16,14 @@ class CategoryDropdown extends Component {
     }
 
     render() {
+        // Is this toggle stuff required?
         return (<Dropdown nav isOpen={this.state.isOpen} toggle={this.toggleIsOpen}>
             <DropdownToggle nav caret>
                 {this.props.name}
             </DropdownToggle>
             <DropdownMenu>
                 {this.props.subCategories.map(subCategory =>
-                    <DropdownItem onClick={() => alert(subCategory.id)}>{subCategory.name}</DropdownItem>
+                    <DropdownItem key={subCategory.id} onClick={() => this.props.onUpdateSubCategory(subCategory.id)}>{subCategory.name}</DropdownItem>
                 )}
             </DropdownMenu>
         </Dropdown>)
@@ -40,12 +41,13 @@ export class CategoryNav extends Component {
         this.populateWeatherData();
     }
 
-    static renderCategoryNav(categories) {
+    static renderCategoryNav(categories, onUpdateSubCategory) {
         return (
             <div>
                 <Nav tabs>
-                    {categories.map(category =>
-                        <CategoryDropdown {...category} />
+                    {
+                        categories.map(category =>
+                            <CategoryDropdown key={category.id} {...category} onUpdateSubCategory={onUpdateSubCategory} />
                     )}
                 </Nav>
             </div>
@@ -56,7 +58,7 @@ export class CategoryNav extends Component {
         return (
             this.state.loading
                 ? <p><em>Loading...</em></p>
-                : CategoryNav.renderCategoryNav(this.state.categories)
+                : CategoryNav.renderCategoryNav(this.state.categories, this.props.onUpdateSubCategory)
         );
     }
 

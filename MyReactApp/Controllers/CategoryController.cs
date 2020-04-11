@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyReactApp.Models;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace MyReactApp.Controllers
@@ -11,14 +10,19 @@ namespace MyReactApp.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        private readonly IDbConnectionFactory _dbConnectionFactory;
+
+        public CategoryController(IDbConnectionFactory dbConnectionFactory)
+        {
+            _dbConnectionFactory = dbConnectionFactory;
+        }
+
         // GET: api/Category
         [HttpGet]
         public IEnumerable<object> Get()
         {
-            var connectionString = "server=(local);database=AdventureWorks2017;Integrated Security=SSPI";
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = _dbConnectionFactory.GetConnection())
             {
-                connection.Open();
                 var sql = @"
                 select * from Production.ProductCategory
                 select * from Production.ProductSubcategory";
