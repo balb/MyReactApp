@@ -24,6 +24,13 @@ So I thought I would be using Axios to get data. Don't need to as can just use f
 ## Tasks
 
 1. ~~Make a menu tree thing for AdventureWorks Categories and Subcategories.~~
-2. List products for a given Subcategory
+2. ~~List products for a given Subcategory~~
 3. Edit products
 4. Validation, client and server side
+
+## Review
+* Visual Studio is very slow starting up. Should the project be split out to client side / server side projects? Switch off SPA stuff?
+
+## Questions and next steps
+* How do you do locally scoped css like Vue.js?
+* How to secure API calls?
