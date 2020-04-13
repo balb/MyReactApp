@@ -25,16 +25,20 @@ So I thought I would be using Axios to get data. Don't need to as can just use f
 
 1. ~~Make a menu tree thing for AdventureWorks Categories and Subcategories.~~
 2. ~~List products for a given Subcategory~~
-3. Edit products
-4. Validation, client and server side
+3. ~~Edit products~~
+4. ~~Validation, client and server side~~
 
 ## Review
-* Visual Studio is very slow starting up. Should the project be split out to client side / server side projects? Switch off SPA stuff?
-* The Visual Studio adds lots of extra stuff - as you would expect.
+* Visual Studio is very slow starting up. Switch off UseReactDevelopmentServer() in Startup and use UseProxyToSpaDevelopmentServer.
+* The Visual Studio template adds lots of extra stuff - as you would expect. 
 * https://neutrinojs.org/ - This looks better for creating the react stuff.
-* How do I wire up hot-reload with VS web server?
+* How do I wire up hot-reload with VS web server? The whole page refreshes on script change. Is it a side effect of create-react-app?
+
+https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&tabs=visual-studio#add-pages-images-styles-modules-etc
 
 ## Questions and next steps
 * How do you do locally scoped css like Vue.js?
-* How to secure API calls?
-* Generate client APIs from Swagger (autorest/NSwag)
+* How to secure API calls? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.1
+* Generate client APIs from Swagger (autorest/NSwag). Is it worth it?
+* Is it worth trying Parcel bundler?
+* Create a nowmal MVC app with some normal pages. Add some react components to it.

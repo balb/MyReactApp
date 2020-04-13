@@ -63,7 +63,9 @@ namespace MyReactApp
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+                    // spa.UseReactDevelopmentServer(npmScript: "start");
+                    // need to run 'npm start' manually but it is much quicker
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000/");
                 }
             });
         }
