@@ -33,6 +33,8 @@ So I thought I would be using Axios to get data. Don't need to as can just use f
 * The Visual Studio template adds lots of extra stuff - as you would expect. 
 * https://neutrinojs.org/ - This looks better for creating the react stuff.
 * How do I wire up hot-reload with VS web server? The whole page refreshes on script change. Is it a side effect of create-react-app?
+  - yes! But hot-reload does not work when dev server SSL is enabled (Project properties -> Debug -> Web Server Settings -> Enable SSL) aspnetcore BUG.
+  https://github.com/dotnet/aspnetcore/issues/11498
 
 https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&tabs=visual-studio#add-pages-images-styles-modules-etc
 
@@ -41,4 +43,6 @@ https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetco
 * How to secure API calls? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.1
 * Generate client APIs from Swagger (autorest/NSwag). Is it worth it?
 * Is it worth trying Parcel bundler?
-* Create a nowmal MVC app with some normal pages. Add some react components to it.
+* Create a normal MVC app with some normal pages. Add some react components to it.
+
+
