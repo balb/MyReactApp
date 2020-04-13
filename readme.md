@@ -30,6 +30,9 @@ So I thought I would be using Axios to get data. Don't need to as can just use f
 
 ## Review
 * Visual Studio is very slow starting up. Should the project be split out to client side / server side projects? Switch off SPA stuff?
+* The Visual Studio adds lots of extra stuff - as you would expect.
+* https://neutrinojs.org/ - This looks better for creating the react stuff.
+* How do I wire up hot-reload with VS web server?
 
 ## Questions and next steps
 * How do you do locally scoped css like Vue.js?
