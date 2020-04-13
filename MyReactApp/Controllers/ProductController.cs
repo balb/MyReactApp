@@ -1,7 +1,9 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MyReactApp.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyReactApp.Controllers
 {
@@ -18,7 +20,8 @@ namespace MyReactApp.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public IEnumerable<Product> Get(int productSubcategoryId)
+        [Route("List")]
+        public IEnumerable<Product> List(int productSubcategoryId)
         {
             using (var connection = _dbConnectionFactory.GetConnection())
             {
@@ -28,10 +31,30 @@ namespace MyReactApp.Controllers
             }
         }
 
+        [HttpGet]
+        public Product Get(int productId)
+        {
+            using (var connection = _dbConnectionFactory.GetConnection())
+            {
+                return connection.Query<Product>(
+                    "select top 1 * from [Production].[Product] where [ProductID] = @ProductID",
+                    new { productId }).FirstOrDefault();
+            }
+        }
+
         // POST: api/Product
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Product value)
         {
+            if(value.ListPrice > 100)
+            {
+                ModelState.AddModelError("ListPrice", "Toooo much!");
+                return BadRequest(ModelState);
+            }
+
+            // Save the thing
+
+            return Ok();
         }
 
         // PUT: api/Product/5

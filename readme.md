@@ -34,3 +34,4 @@ So I thought I would be using Axios to get data. Don't need to as can just use f
 ## Questions and next steps
 * How do you do locally scoped css like Vue.js?
 * How to secure API calls?
+* Generate client APIs from Swagger (autorest/NSwag)

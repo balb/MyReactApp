@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Table } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export function ProductList(props) {
     return (<ProductListTable productSubcategoryId={props.match.params.id} />)
@@ -23,7 +24,7 @@ class ProductListTable extends Component {
     }
 
     async populateProducts() {
-        const response = await fetch('api/Product?productSubcategoryId=' + this.props.productSubcategoryId);
+        const response = await fetch('api/Product/List?productSubcategoryId=' + this.props.productSubcategoryId);
         const data = await response.json();
         this.setState({ products: data, loading: false });
     }
@@ -39,6 +40,7 @@ class ProductListTable extends Component {
                         <th>Product Number</th>
                         <th>Color</th>
                         <th>List Price</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +51,7 @@ class ProductListTable extends Component {
                             <td>{product.productNumber}</td>
                             <td>{product.color}</td>
                             <td>{product.listPrice}</td>
+                            <td><Link to={{ pathname: '/product-edit/' + product.productId }}>Edit</Link></td>
                             </tr>
                         ))}
                 </tbody>
