@@ -46,3 +46,21 @@ https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetco
 * Create a normal MVC app with some normal pages. Add some react components to it.
 	- Multiple bundles
 	- Working in dev and prod
+	
+To create multiple bundles, update .neutrinorc.js to look like this
+```
+module.exports = {
+  options: {
+    root: __dirname,
+    mains: {
+      index: 'index',
+      admin: 'admin'
+    },
+  },
+```
+
+Where index and admin are the 'bundles'. See https://neutrinojs.org/packages/react/#customizing
+
+For a normal MVC app, you could create some bundles. Then parse out the script links from the generated html for use in a Razor page (HtmlAgilityPack). Would need to get html via webpack server in dev. Just parse build files in prod.
+
+So to create a full MVC app. Create the app. Copy in the Startup.cs and .csproj stuff from a React SPA app. Make changes to use UseProxyToSpaDevelopmentServer() for hot reloading. Use neutrinojs to create an empty React client app. Update .neutrinorc.js if bundles required. Write something to parse out script links. Done
