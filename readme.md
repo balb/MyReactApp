@@ -41,8 +41,8 @@ https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetco
 ## Questions and next steps
 * How do you do locally scoped css like Vue.js?
 * How to secure API calls? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.1
-* Generate client APIs from Swagger (autorest/NSwag). Is it worth it?
+* Generate client APIs from Swagger (autorest/NSwag). Is it worth it? CLient side validation?
 * Is it worth trying Parcel bundler?
 * Create a normal MVC app with some normal pages. Add some react components to it.
-
-
+	- Multiple bundles
+	- Working in dev and prod
