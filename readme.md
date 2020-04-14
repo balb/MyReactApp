@@ -39,7 +39,7 @@ So I thought I would be using Axios to get data. Don't need to as can just use f
 https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&tabs=visual-studio#add-pages-images-styles-modules-etc
 
 ## Questions and next steps
-* How do you do locally scoped css like Vue.js?
+* How do you do locally scoped css like Vue.js? Use CSS Modules via *.module.css file extensions
 * How to secure API calls? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.1
 * Generate client APIs from Swagger (autorest/NSwag). Is it worth it? CLient side validation?
 * Is it worth trying Parcel bundler?
